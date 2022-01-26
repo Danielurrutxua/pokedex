@@ -27,7 +27,7 @@ app.use(
   );
 
 
-const CONNECTION_URL = "XDXDXDXDXDXDXDXDXDXDXDXD";
+const CONNECTION_URL = "";
 
 
 const PORT = process.env.PORT || 5000;

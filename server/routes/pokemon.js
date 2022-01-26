@@ -3,8 +3,8 @@ import { getAllPokemon, getPokemonByName } from '../controllers/pokemon.js'
 
 const router = express.Router();
 
-router.get('/:username', getAllPokemon);
+router.get('/', getAllPokemon);
 
-router.get('/:name/:username', getPokemonByName);
+router.get('/:name', getPokemonByName);
 
 export default router;
