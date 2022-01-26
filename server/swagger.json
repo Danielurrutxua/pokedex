@@ -1,0 +1,500 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "description": " This is the server is of a Pokedex application. All the information about the pokemon comes from the official API of pokemon https://pokeapi.co/ .",
+      "version": "1.0.0",
+      "title": "Pokedex",
+      "contact": {
+        "email": "danielurrutxua@opendeusto.es"
+      },
+      "license": {
+        "name": "Apache 2.0",
+        "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+      }
+    },
+    "host": "lovalhost:5000",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "pokemon",
+        "description": "Get pokemon routes"
+      },
+      {
+        "name": "user",
+        "description": "Operations about user" 
+      }
+    ],
+    "schemes": [
+      "https",
+      "http"
+    ],
+    "paths": {
+      "/pokemon": {
+        "get": {
+          "tags": [
+            "pokemon"
+          ],
+          "summary": "Get all pokemon",
+          "description": "Returns all pokemon existing in the PokeApi",
+          "operationId": "getAllPokemon",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [],
+          "security": [
+            {
+              "petstore_auth": [
+                "write:pets",
+                "read:pets"
+              ]
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Pokemon"
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid tag value"
+            }
+          },
+          "x-swagger-router-controller": "Pokemon"
+        }
+      },
+      "/pokemon/{pokemonId}": {
+        "get": {
+          "tags": [
+            "pokemon"
+          ],
+          "summary": "Find pokemon by ID",
+          "description": "Returns a single pokemon",
+          "operationId": "getPokemonById",
+          "produces": [
+            "application/xml",
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "pokemonId",
+              "in": "path",
+              "description": "ID of pet to return",
+              "required": true,
+              "type": "integer",
+              "format": "int64"
+            }
+          ],
+          "security": [
+            {
+              "api_key": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "$ref": "#/definitions/Pokemon"
+              }
+            },
+            "400": {
+              "description": "Invalid ID supplied"
+            },
+            "404": {
+              "description": "Pet not found"
+            }
+          },
+          "x-swagger-router-controller": "Pokemon"
+        }
+      },
+      "/user": {
+        "post": {
+          "tags": [
+            "user"
+          ],
+          "summary": "Create user",
+          "description": "This can only be done by the logged in user.",
+          "operationId": "createUser",
+          "produces": [
+            "application/xml",
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "Created user object",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          ],
+          "responses": {
+            "default": {
+              "description": "successful operation"
+            }
+          },
+          "x-swagger-router-controller": "User"
+        }
+      },
+      "/user/createWithArray": {
+        "post": {
+          "tags": [
+            "user"
+          ],
+          "summary": "Creates list of users with given input array",
+          "description": "",
+          "operationId": "createUsersWithArrayInput",
+          "produces": [
+            "application/xml",
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "List of user object",
+              "required": true,
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/User"
+                }
+              }
+            }
+          ],
+          "responses": {
+            "default": {
+              "description": "successful operation"
+            }
+          },
+          "x-swagger-router-controller": "User"
+        }
+      },
+      "/user/createWithList": {
+        "post": {
+          "tags": [
+            "user"
+          ],
+          "summary": "Creates list of users with given input array",
+          "description": "",
+          "operationId": "createUsersWithListInput",
+          "produces": [
+            "application/xml",
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "List of user object",
+              "required": true,
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/User"
+                }
+              }
+            }
+          ],
+          "responses": {
+            "default": {
+              "description": "successful operation"
+            }
+          },
+          "x-swagger-router-controller": "User"
+        }
+      },
+      "/user/login": {
+        "get": {
+          "tags": [
+            "user"
+          ],
+          "summary": "Logs user into the system",
+          "description": "",
+          "operationId": "loginUser",
+          "produces": [
+            "application/xml",
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "username",
+              "in": "query",
+              "description": "The user name for login",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "password",
+              "in": "query",
+              "description": "The password for login in clear text",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "headers": {
+                "X-Rate-Limit": {
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "calls per hour allowed by the user"
+                },
+                "X-Expires-After": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "date in UTC when token expires"
+                }
+              },
+              "schema": {
+                "type": "string"
+              }
+            },
+            "400": {
+              "description": "Invalid username/password supplied"
+            }
+          },
+          "x-swagger-router-controller": "User"
+        }
+      },
+      "/user/logout": {
+        "get": {
+          "tags": [
+            "user"
+          ],
+          "summary": "Logs out current logged in user session",
+          "description": "",
+          "operationId": "logoutUser",
+          "produces": [
+            "application/xml",
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {
+            "default": {
+              "description": "successful operation"
+            }
+          },
+          "x-swagger-router-controller": "User"
+        }
+      },
+      "/user/{username}": {
+        "get": {
+          "tags": [
+            "user"
+          ],
+          "summary": "Get user by user name",
+          "description": "",
+          "operationId": "getUserByName",
+          "produces": [
+            "application/xml",
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "username",
+              "in": "path",
+              "description": "The name that needs to be fetched. Use user1 for testing. ",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            },
+            "400": {
+              "description": "Invalid username supplied"
+            },
+            "404": {
+              "description": "User not found"
+            }
+          },
+          "x-swagger-router-controller": "User"
+        },
+        "put": {
+          "tags": [
+            "user"
+          ],
+          "summary": "Updated user",
+          "description": "This can only be done by the logged in user.",
+          "operationId": "updateUser",
+          "produces": [
+            "application/xml",
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "username",
+              "in": "path",
+              "description": "name that need to be updated",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "in": "body",
+              "name": "body",
+              "description": "Updated user object",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          ],
+          "responses": {
+            "400": {
+              "description": "Invalid user supplied"
+            },
+            "404": {
+              "description": "User not found"
+            }
+          },
+          "x-swagger-router-controller": "User"
+        },
+        "delete": {
+          "tags": [
+            "user"
+          ],
+          "summary": "Delete user",
+          "description": "This can only be done by the logged in user.",
+          "operationId": "deleteUser",
+          "produces": [
+            "application/xml",
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "username",
+              "in": "path",
+              "description": "The name that needs to be deleted",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "400": {
+              "description": "Invalid username supplied"
+            },
+            "404": {
+              "description": "User not found"
+            }
+          },
+          "x-swagger-router-controller": "User"
+        }
+      }
+    },
+    "securityDefinitions": {
+      "petstore_auth": {
+        "type": "oauth2",
+        "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
+        "flow": "implicit",
+        "scopes": {
+          "write:pets": "modify pets in your account",
+          "read:pets": "read your pets"
+        }
+      },
+      "api_key": {
+        "type": "apiKey",
+        "name": "api_key",
+        "in": "header"
+      }
+    },
+    "definitions": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "username": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "xml": {
+          "name": "User"
+        },
+        "example": {
+          "password": "password",
+          "id": 0,
+          "email": "email",
+          "username": "username"
+        }
+      },
+      "Pokemon": {
+        "type": "object",
+        "required": [
+          "favourite",
+          "id",
+          "name",
+          "types"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string",
+            "example": "pikachu"
+          },
+          "types": {
+            "type": "array",
+            "example": [
+              "water",
+              "fire"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "favourite": {
+            "type": "boolean",
+            "example": true
+          }
+        },
+        "xml": {
+          "name": "Pokemon"
+        },
+        "example": {
+          "types": [
+            "water",
+            "fire"
+          ],
+          "name": "pikachu",
+          "id": 0,
+          "favourite": true
+        }
+      },
+      "ApiResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
