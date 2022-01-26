@@ -27,7 +27,7 @@ app.use(
   );
 
 
-const CONNECTION_URL = "";
+const CONNECTION_URL = "mongodb+srv://danielu227:FontBella2@cluster0.jbj8g.mongodb.net/pokedex?retryWrites=true&w=majority";
 
 
 const PORT = process.env.PORT || 5000;
