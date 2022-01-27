@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.pokemon.pokedetail.PokemonDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/toolbar_detail"
+            android:id="@+id/toolbar_detail"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_detail">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/chevron_left"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/icon_chevron_left"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/chevron_left_text"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:fontFamily="sans-serif"
+                android:letterSpacing="0.09"
+                android:lineSpacingExtra="5sp"
+                android:textColor="@color/fire"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:singleLine="true"
+                app:layout_constraintStart_toEndOf="@+id/chevron_left"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="SmallSp"
+                tools:text="#003 Venusaur" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/chevron_right_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:fontFamily="sans-serif"
+                android:letterSpacing="0.09"
+                android:lineSpacingExtra="5sp"
+                android:textColor="@color/fire"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:maxWidth="130dp"
+                android:singleLine="true"
+                app:layout_constraintEnd_toStartOf="@+id/chevron_right"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="SmallSp"
+                tools:text="#003 Venusaur" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/chevron_right"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/icon_chevron_right"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ScrollView
+            android:id="@+id/scrollview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_bar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="15dp"
+                app:cardBackgroundColor="@color/cardview"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="0dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraint"
+                    android:layout_width="match_parent"
+                    android:layout_height="850dp">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/id_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:letterSpacing="0.05"
+                        android:lineSpacingExtra="8.5sp"
+                        android:text="@{'#'+viewmodel.pokemon.id}"
+                        android:textColor="#1c1c1e"
+                        android:textSize="15sp"
+                        android:textStyle="normal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="#004" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/favorito_img"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/icon_favourite_filled_blue"
+                        app:layout_constraintBottom_toBottomOf="@+id/favorito_text"
+                        app:layout_constraintEnd_toStartOf="@+id/favorito_text"
+                        app:layout_constraintTop_toTopOf="@+id/favorito_text" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/favorito_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="17dp"
+                        android:layout_marginEnd="18dp"
+                        android:fontFamily="sans-serif"
+                        android:letterSpacing="0.06"
+                        android:lineSpacingExtra="6.5sp"
+                        android:text="@string/favorito"
+                        android:textColor="#115a72"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/materialTextView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="sans-serif"
+                        android:letterSpacing="0.01"
+                        android:lineSpacingExtra="6sp"
+                        android:text="@{viewmodel.pokemon.name}"
+                        android:textColor="#1c1c1e"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@+id/id_text"
+                        app:layout_constraintTop_toBottomOf="@+id/id_text"
+                        tools:text="Charmander" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip1"
+                        style="@style/Chip.Detail"
+                        android:layout_marginStart="22dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/materialTextView2"
+                        tools:chipBackgroundColor="@color/type_fire_background"
+                        tools:chipIcon="@drawable/icon_fire_colored"
+                        tools:text="@string/fuego"
+                        tools:textColor="@color/fire" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip2"
+                        style="@style/Chip.Detail"
+                        app:chipBackgroundColor="@color/cardview"
+                        app:layout_constraintStart_toEndOf="@id/chip1"
+                        app:layout_constraintTop_toBottomOf="@id/materialTextView2"
+                        tools:chipBackgroundColor="@color/type_fire_background"
+                        tools:chipIcon="@drawable/icon_fire_colored"
+                        tools:text="@string/fuego"
+                        tools:textColor="@color/fire" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/materialCardView2"
+                        android:layout_width="0dp"
+                        android:layout_height="176dp"
+                        android:layout_marginStart="17dp"
+                        android:layout_marginTop="44dp"
+                        android:layout_marginEnd="17dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="0dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/materialTextView2">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/image"
+                                android:layout_width="0dp"
+                                android:layout_height="140dp"
+                                android:layout_marginStart="78dp"
+                                android:layout_marginEnd="78dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:loadImage="@{viewmodel.pokemon.imgUrls[0]}"
+                                tools:src="@tools:sample/avatars" />
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/img_chevron_left"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_marginStart="10dp"
+                                android:background="@drawable/icon_chevron_left"
+                                android:visibility="invisible"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/img_chevron_right"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_marginEnd="10dp"
+                                android:background="@drawable/icon_chevron_right"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <com.google.android.material.chip.ChipGroup
+                                android:id="@+id/chipGroup"
+                                android:layout_width="wrap_content"
+                                android:layout_height="45dp"
+                                app:checkedChip="@+id/original"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:selectionRequired="true"
+                                app:singleSelection="true">
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/original"
+                                    style="@style/Chip.Fire"
+                                    android:layout_width="96dp"
+                                    android:text="@string/original"
+                                    android:textAlignment="center" />
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/shiny"
+                                    style="@style/Chip.Fire"
+                                    android:layout_width="96dp"
+                                    android:text="@string/shiny"
+                                    android:textAlignment="center" />
+
+                            </com.google.android.material.chip.ChipGroup>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/altura"
+                        style="@style/TextviewAtributos"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="24dp"
+                        android:letterSpacing="0.06"
+                        android:text="@string/altura"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/materialCardView2" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/altura_valor"
+                        style="@style/TextviewAtributosValores"
+                        android:letterSpacing="0.05"
+                        android:text="@{viewmodel.pokemon.height}"
+                        app:layout_constraintStart_toStartOf="@+id/altura"
+                        app:layout_constraintTop_toBottomOf="@+id/altura"
+                        tools:text="1,1 m" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/peso"
+                        style="@style/TextviewAtributos"
+                        android:layout_marginEnd="112dp"
+                        android:letterSpacing="0.06"
+                        android:text="@string/peso"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/altura" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/peso_valor"
+                        style="@style/TextviewAtributosValores"
+                        android:letterSpacing="0.05"
+                        android:text="@{viewmodel.pokemon.weight}"
+                        app:layout_constraintStart_toStartOf="@+id/peso"
+                        app:layout_constraintTop_toBottomOf="@+id/peso"
+                        tools:text="19,0 kg" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="41dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="#281c1c1e"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/altura" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/habilidades"
+                        style="@style/TextviewAtributos"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="60dp"
+                        android:letterSpacing="0.06"
+                        android:text="@string/habilidades"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/altura" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/habilidad_1"
+                        style="@style/TextviewAtributosValores"
+                        android:letterSpacing="0.06"
+                        app:layout_constraintStart_toStartOf="@+id/habilidades"
+                        app:layout_constraintTop_toBottomOf="@+id/habilidades"
+                        tools:text="· Llamarada" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/habilidad_2"
+                        style="@style/TextviewAtributosValores"
+                        android:letterSpacing="0.05"
+                        app:layout_constraintStart_toStartOf="@+id/peso"
+                        app:layout_constraintTop_toBottomOf="@+id/habilidades"
+                        tools:text="· Poder-solar" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/habilidad_3"
+                        style="@style/TextviewAtributosValores"
+                        android:layout_marginTop="20dp"
+                        android:letterSpacing="0.06"
+                        android:visibility="gone"
+                        app:layout_constraintStart_toStartOf="@+id/habilidades"
+                        app:layout_constraintTop_toBottomOf="@+id/habilidad_1"
+                        app:layout_goneMarginTop="0dp"
+                        tools:text="· Llamarada" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/habilidad_4"
+                        style="@style/TextviewAtributosValores"
+                        android:layout_marginTop="20dp"
+                        android:letterSpacing="0.05"
+                        app:layout_constraintStart_toStartOf="@+id/peso"
+                        app:layout_constraintTop_toBottomOf="@+id/habilidad_2"
+                        tools:text="· Poder-solar" />
+
+                    <View
+                        android:id="@+id/view"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="#281c1c1e"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/habilidad_3" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/estadisticas"
+                        style="@style/TextviewAtributos"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="18dp"
+                        android:letterSpacing="0.06"
+                        android:text="@string/estad_sticas"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view"
+                        tools:layout_editor_absoluteY="475dp" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/vida_valor"
+                        style="@style/TextviewAtributosValores.Estadisticas"
+                        android:layout_marginTop="9.5dp"
+                        android:text="@{viewmodel.pokemon.stats[0]}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/estadisticas"
+                        tools:text="60" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/defensa_valor"
+                        style="@style/TextviewAtributosValores.Estadisticas"
+                        android:text="@{viewmodel.pokemon.stats[1]}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/vida_valor"
+                        tools:text="60" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/ataque_valor"
+                        style="@style/TextviewAtributosValores.Estadisticas"
+                        android:text="@{viewmodel.pokemon.stats[2]}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/defensa_valor"
+                        tools:text="60" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/ataque_especial_valor"
+                        style="@style/TextviewAtributosValores.Estadisticas"
+                        android:text="@{viewmodel.pokemon.stats[3]}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ataque_valor"
+                        tools:text="60" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/velocidad_valor"
+                        style="@style/TextviewAtributosValores.Estadisticas"
+                        android:text="@{viewmodel.pokemon.stats[4]}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ataque_especial_valor"
+                        tools:text="60" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/defensa_especial_valor"
+                        style="@style/TextviewAtributosValores.Estadisticas"
+                        android:text="@{viewmodel.pokemon.stats[5]}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/velocidad_valor"
+                        tools:text="60" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/vida_texto"
+                        style="@style/TextviewAtributos.Estadisticas"
+                        android:text="@string/vida"
+                        app:layout_constraintBottom_toBottomOf="@+id/vida_valor"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/vida_valor" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/defensa_texto"
+                        style="@style/TextviewAtributos.Estadisticas"
+                        android:text="@string/defensa"
+                        app:layout_constraintBottom_toBottomOf="@+id/defensa_valor"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/defensa_valor" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/ataque_texto"
+                        style="@style/TextviewAtributos.Estadisticas"
+                        android:text="@string/ataque"
+                        app:layout_constraintBottom_toBottomOf="@+id/ataque_valor"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/ataque_valor" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/ataque_especial_texto"
+                        style="@style/TextviewAtributos.Estadisticas"
+                        android:text="@string/ataque_especial"
+                        app:layout_constraintBottom_toBottomOf="@+id/ataque_especial_valor"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/ataque_especial_valor" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/velocidad_texto"
+                        style="@style/TextviewAtributos.Estadisticas"
+                        android:text="@string/velocidad"
+                        app:layout_constraintBottom_toBottomOf="@+id/velocidad_valor"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/velocidad_valor" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/defensa_especial_texto"
+                        style="@style/TextviewAtributos.Estadisticas"
+                        android:text="@string/defensa_especial"
+                        app:layout_constraintBottom_toBottomOf="@+id/defensa_especial_valor"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/defensa_especial_valor" />
+
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/progress_0"
+                        style="@style/ProgressBar"
+                        app:layout_constraintEnd_toEndOf="@+id/vida_texto"
+                        app:layout_constraintStart_toStartOf="@id/vida_valor"
+                        app:layout_constraintTop_toBottomOf="@id/vida_valor" />
+
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/progress_1"
+                        style="@style/ProgressBar"
+                        app:layout_constraintEnd_toEndOf="@+id/defensa_texto"
+                        app:layout_constraintStart_toStartOf="@id/defensa_valor"
+                        app:layout_constraintTop_toBottomOf="@id/defensa_valor" />
+
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/progress_2"
+                        style="@style/ProgressBar"
+                        app:layout_constraintEnd_toEndOf="@+id/ataque_texto"
+                        app:layout_constraintStart_toStartOf="@id/ataque_valor"
+                        app:layout_constraintTop_toBottomOf="@id/ataque_valor" />
+
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/progress_3"
+                        style="@style/ProgressBar"
+                        app:layout_constraintEnd_toEndOf="@+id/ataque_especial_texto"
+                        app:layout_constraintStart_toStartOf="@id/ataque_especial_valor"
+                        app:layout_constraintTop_toBottomOf="@id/ataque_especial_valor" />
+
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/progress_4"
+                        style="@style/ProgressBar"
+                        app:layout_constraintEnd_toEndOf="@+id/velocidad_texto"
+                        app:layout_constraintStart_toStartOf="@id/velocidad_valor"
+                        app:layout_constraintTop_toBottomOf="@id/velocidad_valor" />
+
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/progress_5"
+                        style="@style/ProgressBar"
+                        app:layout_constraintEnd_toEndOf="@+id/defensa_especial_texto"
+                        app:layout_constraintStart_toStartOf="@id/defensa_especial_valor"
+                        app:layout_constraintTop_toBottomOf="@id/defensa_especial_valor" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </ScrollView>
+
+        <FrameLayout
+            android:id="@+id/bottom_bar"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:elevation="10dp"
+            android:background="@drawable/layout_shadow"
+            app:layout_constraintTop_toBottomOf="@+id/scrollview"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/fav_button"
+                android:layout_width="wrap_content"
+                android:layout_height="54dp"
+                android:layout_gravity="center"
+                android:drawableLeft="@drawable/icon_favourite_filled_white"
+                android:text="@string/a_adir_a_favoritos"
+                style="@style/ButtonFav"/>
+
+        </FrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>
