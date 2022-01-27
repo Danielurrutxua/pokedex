@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scd_container"
+    android:layout_width="270dp"
+    android:layout_height="140dp"
+    android:background="?attr/colorBackgroundFloating"
+    android:minWidth="270dp"
+    tools:showIn="@layout/container_dialog">
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/sd_description"
+        android:layout_width="222dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:lineSpacingExtra="5sp"
+        android:maxLines="3"
+        android:text="Apparently we had reached a great height in the atmosphere, for the..."
+        android:textAppearance="@style/Body2Light"
+        android:visibility="gone"
+        android:fontFamily="sans-serif-medium"
+        android:textStyle="normal"
+        android:textSize="15sp"
+        android:textColor="@color/text"
+        android:letterSpacing="0.05"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0.5dp"
+        android:background="#281c1c1e"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/sd_right_button" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/sd_right_button"
+        style="@style/DialogButton"
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Button"
+        android:textAppearance="@style/Body1Regular"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sd_description"
+        tools:visibility="visible" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/sd_left_button"
+        style="@style/DialogButton"
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        android:textAppearance="@style/Body1Light"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/sd_right_button"
+        app:layout_constraintEnd_toStartOf="@+id/sd_right_button"
+        tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

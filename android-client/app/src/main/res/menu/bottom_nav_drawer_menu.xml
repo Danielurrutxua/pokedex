@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav1"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.05"
+            android:lineSpacingExtra="7.2sp"
+            android:textColor="#1c1c1e"
+            android:textSize="14.4sp"
+            android:textStyle="normal"
+            android:title="@string/numero_ascendente"
+            android:icon="@drawable/icon_arrow_check"
+            android:theme="@style/Theme.MaterialComponents.CompactMenu"
+            app:iconTint="#ffffff"/>
+        <item
+            android:id="@+id/nav2"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.05"
+            android:lineSpacingExtra="7.2sp"
+            android:textColor="#1c1c1e"
+            android:textSize="14.4sp"
+            android:textStyle="normal"
+            android:title="@string/numero_descendente" />
+        <item
+            android:id="@+id/nav3"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.05"
+            android:lineSpacingExtra="7.2sp"
+            android:textColor="#1c1c1e"
+            android:textSize="14.4sp"
+            android:textStyle="normal"
+            android:title="@string/de_la_a_a_la_z" />
+        <item
+            android:id="@+id/nav4"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.05"
+            android:lineSpacingExtra="7.2sp"
+            android:textColor="#1c1c1e"
+            android:textSize="14.4sp"
+            android:textStyle="normal"
+            android:title="@string/de_la_z_a_la_a" />
+    </group>
+</menu>

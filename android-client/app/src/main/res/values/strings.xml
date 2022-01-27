@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">Pokemon</string>
+    <string name="type">Type</string>
+    <string name="ability">Abilities</string>
+    <string name="effect">Effect:</string>
+    <string name="short_effect">Short effect: </string>
+    <string name="ok">OK</string>
+    <string name="species">Species</string>
+    <string name="height">Height:</string>
+    <string name="weight">Weight:</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ver_favoritos">Ver Favoritos</string>
+    <string name="filtrar">FILTRAR</string>
+    <string name="numero_ascendente">Número ascendente</string>
+    <string name="numero_descendente">Número descendente</string>
+    <string name="de_la_a_a_la_z">De la A a la Z</string>
+    <string name="de_la_z_a_la_a">De la Z a la A</string>
+    <string name="nav1_clicked">Navigation 1 Clicked</string>
+    <string name="nav2_clicked">Navigation 2 Clicked</string>
+    <string name="nav3_clicked">Navigation 3 Clicked</string>
+    <string name="nav4_clicked">Navigation 4 Clicked</string>
+    <string name="ordenar">Ordenar</string>
+    <string name="fire">Fire</string>
+    <string name="fuego">Fuego</string>
+    <string name="volador">Volador</string>
+    <string name="planta">Planta</string>
+    <string name="veneno">Veneno</string>
+    <string name="original">Original</string>
+    <string name="shiny">Shiny</string>
+    <string name="altura">Altura</string>
+    <string name="peso">Peso</string>
+    <string name="habilidades">Habilidades</string>
+    <string name="estad_sticas">Estadísticas</string>
+    <string name="favorito">Favorito</string>
+    <string name="a_adir_a_favoritos">Añadir a favoritos</string>
+    <string name="velocidad">Velocidad</string>
+    <string name="ataque_especial">Ataque especial</string>
+    <string name="defensa_especial">Defensa especial</string>
+    <string name="ataque">Ataque</string>
+    <string name="defensa">Defensa</string>
+    <string name="vida">Vida</string>
+    <string name="volver_al_listado">Volver al listado</string>
+
+</resources>

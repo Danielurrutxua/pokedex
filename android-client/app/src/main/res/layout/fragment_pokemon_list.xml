@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.pokemon.pokelist.ListviewViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:clipChildren="false"
+        android:animateLayoutChanges="true"
+        android:fitsSystemWindows="true">
+
+        <include
+            android:id="@+id/toolbar_layout"
+            layout="@layout/my_toolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="?attr/actionBarSize"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:context=".MainActivity">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/app_bar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:id="@+id/collapsing_toolbar_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:backgroundTint="@color/white"
+                    app:contentScrim="?attr/colorPrimary"
+                    app:layout_scrollFlags="scroll|enterAlwaysCollapsed">
+
+                    <include
+                        android:id="@+id/card_view_layout"
+                        layout="@layout/card_view_filters" />
+
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/pokemon_count"
+                android:layout_width="wrap_content"
+                android:layout_height="16dp"
+                android:layout_marginStart="19dp"
+                android:baselineAlignBottom="false"
+                android:fitsSystemWindows="true"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="0.09"
+                android:lineSpacingExtra="5sp"
+                android:textColor="#555556"
+                android:textSize="11sp"
+                android:textStyle="normal"
+                android:translationY="10dp"
+                app:layout_anchor="@id/app_bar_layout"
+                app:layout_anchorGravity="bottom"
+                tools:ignore="SmallSp"
+                tools:text="815 Pokémon" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/pokemon_rw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:translationY="20dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_anchor="@id/app_bar_layout"
+                app:layout_anchorGravity="bottom"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+                app:listData="@{viewModel.pokemonList}"
+                tools:itemCount="16"
+                tools:listitem="@layout/pokemon_list_item" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/scroll_up"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="end|bottom"
+                android:layout_marginEnd="40dp"
+                android:layout_marginBottom="100dp"
+                android:background="@drawable/up_arrow"
+                android:visibility="gone" />
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    </RelativeLayout>
+
+</layout>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary_dark">#022ea8</color>
+    <color name="text_primary_dark">#263238 </color>
+    <color name="primary_light">#115a72</color>
+    <color name="on_primary_light">#6b98a7</color>
+    <color name="light_blue">#c1d4da</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="cardview">#f9f9f9</color>
+    <color name="pokemon_name">#1c1c1e</color>
+    <color name="fire_light">#eed3c7</color>
+    <color name="fire">#c05728</color>
+    <color name="volador">#01108e</color>
+    <color name="volador_light">#ece4fb</color>
+    <color name="planta">#246c26</color>
+    <color name="planta_light">#d7efca</color>
+    <color name="veneno">#480076</color>
+    <color name="veneno_light">#ddbadd</color>
+    <color name="text">#555556</color>
+    <color name="dialog_background">#cc638190</color>
+    <color name="track_color">#eae9e9</color>
+    <color name="indicator_color">#fcdfb6</color>
+    <color name="type_fire_background">#fcdfb6</color>
+    <color name="type_fire">#b23f08</color>
+    <color name="water">#003091</color>
+    <color name="water_light">#e7ecfc</color>
+
+</resources>

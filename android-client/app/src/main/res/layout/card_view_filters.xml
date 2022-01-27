@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/filtrar"
+                android:layout_width="wrap_content"
+                android:layout_height="16dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="0.09"
+                android:lineSpacingExtra="5sp"
+                android:text="@string/filtrar"
+                android:textColor="#555556"
+                android:textSize="11sp"
+                android:textStyle="normal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="SmallSp" />
+
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/filtrar">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chip_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="46dp"
+                    android:layout_marginStart="14dp">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_fuego"
+                        style="@style/Chip.Fire"
+                        android:letterSpacing="0.06"
+                        android:text="@string/fuego"
+                        app:chipIcon="@drawable/icon_fire" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_volador"
+                        style="@style/Chip.Volador"
+                        android:letterSpacing="0.06"
+                        android:text="@string/volador"
+                        app:chipIcon="@drawable/icon_fly" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_planta"
+                        style="@style/Chip.Planta"
+                        android:letterSpacing="0.06"
+                        android:text="@string/planta"
+                        app:chipIcon="@drawable/icon_planta" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_veneno"
+                        style="@style/Chip.Veneno"
+                        android:layout_marginEnd="25dp"
+                        android:letterSpacing="0.06"
+                        android:text="@string/veneno"
+                        app:chipIcon="@drawable/icon_veneno" />
+                </com.google.android.material.chip.ChipGroup>
+            </HorizontalScrollView>
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="78dp"
+                android:layout_marginEnd="14dp"
+                android:background="#281c1c1e"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/materialCheckBox"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/icon_selection_checkbox_off"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="11dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="0.06"
+                android:lineSpacingExtra="5sp"
+                android:singleLine="true"
+                android:text="@string/ver_favoritos"
+                android:textColor="#575758"
+                android:textSize="13sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/materialCheckBox"
+                app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/bottomsheet"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/ic_icon_order"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view3">
+
+            </com.google.android.material.imageview.ShapeableImageView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>
