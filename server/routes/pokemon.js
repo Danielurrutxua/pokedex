@@ -1,10 +1,10 @@
 import express from "express";
-import { getAllPokemon, getPokemonByName } from '../controllers/pokemon.js'
+import { getAllPokemon, getPokemonById } from '../controllers/pokemon.js'
 
 const router = express.Router();
 
 router.get('/', getAllPokemon);
 
-router.get('/:name', getPokemonByName);
+router.get('/:id', getPokemonById);
 
 export default router;
