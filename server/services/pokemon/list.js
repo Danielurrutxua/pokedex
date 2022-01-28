@@ -15,7 +15,7 @@ const formatResults = async (results) => {
   const typesNamesMap = await getTypesNamesMap();
 
   const iteratePokemons = results.map((pokemon) => {
-    const id = pokemon.url.split('/')[6];
+    const id = parseInt(pokemon.url.split('/')[6]);
     let results = {
       name: pokemon.name,
       id: id,
@@ -39,7 +39,6 @@ const getTypesNamesMap = async () => {
     const pokemonIds = getPokemonIds(typeData.data.pokemon);
     typeNamesMap.set(results[i].name, pokemonIds);
   }
-
   return typeNamesMap;
 
 }
@@ -56,9 +55,11 @@ function getKeys(map, id) {
   const keys = [];
   map.forEach((value, key) => {
 
-    if (value.includes(id)) {
+    if (value.includes(id.toString())) {
       keys.push(key)
     }
   });
+
+  
   return keys;
 }
