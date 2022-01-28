@@ -29,7 +29,7 @@ class ItemAdapter(private val pokemonRw: RecyclerView, private val viewModel: Li
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(pokemon: Pokemon) {
 
-            if (pokemon.fav) {
+            if (pokemon.favourite) {
                 binding.favourite.visibility = View.VISIBLE
             }else binding.favourite.visibility = View.INVISIBLE
 

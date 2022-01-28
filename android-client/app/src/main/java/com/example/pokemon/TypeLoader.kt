@@ -17,38 +17,38 @@ class TypeLoader(private val context: Context) {
         chip.iconEndPadding = 0F
 
         when (type) {
-            "Fuego" -> {
+            "Fire" -> {
                 chip.chipBackgroundColor = getColorStateList(context, R.color.type_fire_background)
                 chip.chipIcon = ContextCompat.getDrawable(context, R.drawable.icon_fire_colored)
-                chip.text = "Fuego"
+                chip.text = "Fire"
                 chip.setTextColor(ContextCompat.getColor(context, R.color.type_fire))
             }
 
-            "Veneno" -> {
+            "Poison" -> {
                 chip.chipBackgroundColor = getColorStateList(context, R.color.veneno_light)
                 chip.chipIcon = ContextCompat.getDrawable(context, R.drawable.icon_veneno_colored)
-                chip.text = "Veneno"
+                chip.text = "Poison"
                 chip.setTextColor(ContextCompat.getColor(context, R.color.veneno))
             }
 
-            "Agua" -> {
+            "Water" -> {
                 chip.chipBackgroundColor = getColorStateList(context, R.color.water_light)
                 chip.chipIcon = ContextCompat.getDrawable(context, R.drawable.icon_agua_colored)
-                chip.text = "Agua"
+                chip.text = "Water"
                 chip.setTextColor(ContextCompat.getColor(context, R.color.water))
             }
 
-            "Planta" -> {
+            "Grass" -> {
                 chip.chipBackgroundColor = getColorStateList(context, R.color.planta_light)
                 chip.chipIcon = ContextCompat.getDrawable(context, R.drawable.icon_planta_colored)
-                chip.text = "Planta"
+                chip.text = "Grass"
                 chip.setTextColor(ContextCompat.getColor(context, R.color.planta))
             }
 
-            "Volador" -> {
+            "Flying" -> {
                 chip.chipBackgroundColor = getColorStateList(context, R.color.volador_light)
                 chip.chipIcon = ContextCompat.getDrawable(context, R.drawable.icon_fly_colored)
-                chip.text = "Volador"
+                chip.text = "Flying"
                 chip.setTextColor(ContextCompat.getColor(context, R.color.volador))
             }
             else -> {

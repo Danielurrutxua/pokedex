@@ -20,6 +20,7 @@ import com.example.pokemon.TypeLoader
 import com.example.pokemon.databinding.FragmentPokemonDetailBinding
 import com.example.pokemon.loadImage
 import com.example.pokemon.model.Pokemon
+import com.example.pokemon.model.Stats
 import com.google.android.material.chip.Chip
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.FlowPreview
@@ -96,22 +97,22 @@ class PokemonDetailFragment : Fragment() {
             changeToDefaultImage()
         }
 
-        binding.favButton.setOnClickListener {
-            val pokemon = viewModel.pokemon.value
-            if (pokemon?.fav != null) {
-                if (pokemon.fav) {
-                    createDialog()
-                } else {
-                    changeFavValue(true)
-                    Snackbar.make(
-                        it, "${pokemon.name} se ha añadido a Favoritos",
-                        Snackbar.LENGTH_SHORT
-                    ).show()
-                }
-                isFavourite(pokemon.fav)
-            }
-
-        }
+//        binding.favButton.setOnClickListener {
+//            val pokemon = viewModel.pokemon.value
+//            if (pokemon?.fav != null) {
+//                if (pokemon.fav) {
+//                    createDialog()
+//                } else {
+//                    changeFavValue(true)
+//                    Snackbar.make(
+//                        it, "${pokemon.name} se ha añadido a Favoritos",
+//                        Snackbar.LENGTH_SHORT
+//                    ).show()
+//                }
+//                isFavourite(pokemon.fav)
+//            }
+//
+//        }
 
         binding.toolbarDetail.backArrow.setOnClickListener {
             it.findNavController().popBackStack()
@@ -133,8 +134,8 @@ class PokemonDetailFragment : Fragment() {
     private fun updateUI() {
         viewModel.pokemon.observe(viewLifecycleOwner, { pokemon ->
             loadTextsNextPrevious()
-            isFavourite(pokemon.fav)
-            loadAbilities(pokemon.abilities)
+            //isFavourite(pokemon.fav)
+            pokemon.abilities?.let { loadAbilities(it) }
             loadStats(pokemon.stats)
             loadTypes(pokemon.types)
         })
@@ -179,45 +180,30 @@ class PokemonDetailFragment : Fragment() {
 
     private fun changeToOriginalImage() {
         if (binding.imgChevronRight.isVisible) {
-            if (viewModel.pokemon.value?.imgUrls?.get(0) != null) {
-                loadImage(binding.image, viewModel.pokemon.value!!.imgUrls[0])
-            } else {
-                binding.shiny.isChecked = true
-                binding.original.isChecked = false
-            }
-        } else loadImage(binding.image, viewModel.pokemon.value!!.imgUrls[1])
+            loadImage(binding.image, viewModel.imgUrls[0])
+        } else loadImage(binding.image, viewModel.imgUrls[1])
     }
 
     private fun changeToShinyImage() {
         if (binding.imgChevronRight.isVisible) {
-            if (viewModel.pokemon.value?.imgUrls?.get(2) != null) {
-                loadImage(binding.image, viewModel.pokemon.value!!.imgUrls[2])
-            } else {
-                binding.shiny.isChecked = false
-
-            }
-        } else loadImage(binding.image, viewModel.pokemon.value!!.imgUrls[3])
+            loadImage(binding.image, viewModel.imgUrls[2])
+        } else loadImage(binding.image, viewModel.imgUrls[3])
     }
 
     private fun changeToBackImage() {
         binding.imgChevronRight.visibility = View.INVISIBLE
         binding.imgChevronLeft.visibility = View.VISIBLE
         if (binding.original.isChecked) {
-            if (viewModel.pokemon.value?.imgUrls?.get(1) != null) {
-                loadImage(binding.image, viewModel.pokemon.value!!.imgUrls[1])
-            } else {
-                binding.imgChevronRight.visibility = View.VISIBLE
-                binding.imgChevronLeft.visibility = View.INVISIBLE
-            }
-        } else loadImage(binding.image, viewModel.pokemon.value!!.imgUrls[3])
+            loadImage(binding.image, viewModel.imgUrls[1])
+        } else loadImage(binding.image, viewModel.imgUrls[3])
     }
 
     private fun changeToFrontImage() {
         binding.imgChevronRight.visibility = View.VISIBLE
         binding.imgChevronLeft.visibility = View.INVISIBLE
         if (binding.original.isChecked) {
-            loadImage(binding.image, viewModel.pokemon.value!!.imgUrls[0])
-        } else loadImage(binding.image, viewModel.pokemon.value!!.imgUrls[2])
+            loadImage(binding.image, viewModel.imgUrls[0])
+        } else loadImage(binding.image, viewModel.imgUrls[2])
     }
 
     private fun changeToDefaultImage() {
@@ -265,13 +251,13 @@ class PokemonDetailFragment : Fragment() {
         binding.habilidad3.text = "·".plus(abilities[3])
     }
 
-    private fun loadStats(stats: List<String>) {
-        binding.progress0.progress = stats[0].toInt()
-        binding.progress1.progress = stats[1].toInt()
-        binding.progress2.progress = stats[2].toInt()
-        binding.progress3.progress = stats[3].toInt()
-        binding.progress4.progress = stats[4].toInt()
-        binding.progress5.progress = stats[5].toInt()
+    private fun loadStats(stats: Stats) {
+        binding.progress0.progress = stats.hp
+        binding.progress1.progress = stats.attack
+        binding.progress2.progress = stats.defense
+        binding.progress3.progress = stats.special_attack
+        binding.progress4.progress = stats.speed
+        binding.progress5.progress = stats.special_defense
     }
 
     private fun loadTypes(types: List<String>) {
@@ -350,7 +336,7 @@ class PokemonDetailFragment : Fragment() {
         fragment.setListener(object : DesignSystemDialog.DesignSystemDialogListener {
             override fun onRightButtonClick(dialogName: String) {
                 super.onRightButtonClick(dialogName)
-                changeFavValue(!viewModel.pokemon.value!!.fav)
+                changeFavValue(!viewModel.pokemon.value!!.favourite)
                 Snackbar.make(
                     binding.container,
                     "${viewModel.pokemon.value!!.name} se ha eliminado de Favoritos",

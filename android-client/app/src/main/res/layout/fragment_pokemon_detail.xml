@@ -118,7 +118,7 @@
                         android:fontFamily="sans-serif-medium"
                         android:letterSpacing="0.05"
                         android:lineSpacingExtra="8.5sp"
-                        android:text="@{'#'+viewmodel.pokemon.id}"
+                        android:text="@{'#'+String.valueOf(viewmodel.pokemon.id)}"
                         android:textColor="#1c1c1e"
                         android:textSize="15sp"
                         android:textStyle="normal"
@@ -216,7 +216,7 @@
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
-                                app:loadImage="@{viewmodel.pokemon.imgUrls[0]}"
+
                                 tools:src="@tools:sample/avatars" />
 
                             <com.google.android.material.imageview.ShapeableImageView
@@ -390,7 +390,7 @@
                         android:id="@+id/vida_valor"
                         style="@style/TextviewAtributosValores.Estadisticas"
                         android:layout_marginTop="9.5dp"
-                        android:text="@{viewmodel.pokemon.stats[0]}"
+                        android:text="@{viewmodel.pokemon.stats.hp}"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/estadisticas"
                         tools:text="60" />
@@ -398,7 +398,7 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/defensa_valor"
                         style="@style/TextviewAtributosValores.Estadisticas"
-                        android:text="@{viewmodel.pokemon.stats[1]}"
+                        android:text="@{viewmodel.pokemon.stats.attack}"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/vida_valor"
                         tools:text="60" />
@@ -406,7 +406,7 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/ataque_valor"
                         style="@style/TextviewAtributosValores.Estadisticas"
-                        android:text="@{viewmodel.pokemon.stats[2]}"
+                        android:text="@{viewmodel.pokemon.stats.defense}"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/defensa_valor"
                         tools:text="60" />
@@ -414,7 +414,7 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/ataque_especial_valor"
                         style="@style/TextviewAtributosValores.Estadisticas"
-                        android:text="@{viewmodel.pokemon.stats[3]}"
+                        android:text="@{viewmodel.pokemon.stats.special_attack}"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/ataque_valor"
                         tools:text="60" />
@@ -422,7 +422,7 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/velocidad_valor"
                         style="@style/TextviewAtributosValores.Estadisticas"
-                        android:text="@{viewmodel.pokemon.stats[4]}"
+                        android:text="@{viewmodel.pokemon.stats.speed}"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/ataque_especial_valor"
                         tools:text="60" />
@@ -430,7 +430,7 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/defensa_especial_valor"
                         style="@style/TextviewAtributosValores.Estadisticas"
-                        android:text="@{viewmodel.pokemon.stats[5]}"
+                        android:text="@{viewmodel.pokemon.stats.special_defense}"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/velocidad_valor"
                         tools:text="60" />

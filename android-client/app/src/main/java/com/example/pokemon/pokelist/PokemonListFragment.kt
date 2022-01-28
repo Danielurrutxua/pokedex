@@ -41,9 +41,9 @@ open class PokemonListFragment : Fragment() {
         val recyclerView = binding.pokemonRw
         recyclerView.adapter = ItemAdapter(binding.pokemonRw, viewModel)
 
-        viewModel.pokemonList.observe(viewLifecycleOwner, {
+        viewModel.pokemonList.observe(viewLifecycleOwner) {
             binding.pokemonCount.text = it.size.toString().plus(" Pokémon")
-        })
+        }
 
         initializeToolbar()
 
@@ -54,8 +54,6 @@ open class PokemonListFragment : Fragment() {
     @SuppressLint("ResourceAsColor")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        viewModel.needToAddFavValues()
 
         binding.scrollUp.setOnClickListener {
             binding.pokemonRw.smoothScrollToPosition(0)

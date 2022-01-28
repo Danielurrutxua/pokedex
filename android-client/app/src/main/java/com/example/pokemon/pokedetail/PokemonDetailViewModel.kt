@@ -18,8 +18,8 @@ class PokemonDetailViewModel(application: Application) : AndroidViewModel(applic
 
     private val _pokemon = MutableLiveData<Pokemon>()
     val pokemon: LiveData<Pokemon> = _pokemon
+    lateinit var imgUrls: List<String>
     private var list = mutableListOf<String>()
-
     private val repository: PokemonRepository = getPokemonRepository(application)
 
     @InternalCoroutinesApi
@@ -28,8 +28,18 @@ class PokemonDetailViewModel(application: Application) : AndroidViewModel(applic
         viewModelScope.launch(Dispatchers.IO) {
             repository.getPokemonDetail(name).collect { pokemon ->
                 _pokemon.postValue(pokemon)
+                generateImgUrls(pokemon!!.id)
             }
         }
+    }
+
+    private fun generateImgUrls(id: Int) {
+        imgUrls = listOf(
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$id.png",
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/$id.png",
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/$id.png",
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/$id.png",
+        )
     }
 
     @FlowPreview
@@ -65,9 +75,9 @@ class PokemonDetailViewModel(application: Application) : AndroidViewModel(applic
     fun changeFavValue(value: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
             val pokemon = pokemon.value
-            pokemon!!.fav = value
-            _pokemon.postValue(pokemon)
-            repository.updatePokemon(pokemon)
+//            pokemon!!.fav = value
+//            _pokemon.postValue(pokemon)
+//            repository.updatePokemon(pokemon)
         }
     }
 
