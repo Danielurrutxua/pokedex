@@ -1,10 +1,8 @@
 package com.example.pokemon.pokedetail
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import android.util.Log
+import androidx.lifecycle.*
 import com.example.pokemon.model.Pokemon
 import com.example.pokemon.pokeapi.PokemonRepository
 import com.example.pokemon.pokeapi.getPokemonRepository
@@ -14,23 +12,31 @@ import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-class PokemonDetailViewModel(application: Application) : AndroidViewModel(application) {
+class PokemonDetailViewModel : ViewModel() {
 
     private val _pokemon = MutableLiveData<Pokemon>()
     val pokemon: LiveData<Pokemon> = _pokemon
     lateinit var imgUrls: List<String>
     private var list = mutableListOf<String>()
-    private val repository: PokemonRepository = getPokemonRepository(application)
+    private val repository: PokemonRepository = getPokemonRepository()
 
     @InternalCoroutinesApi
     @FlowPreview
-    fun loadPokemonDetail(name: String) {
+    fun loadPokemonDetail(id: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.getPokemonDetail(name).collect { pokemon ->
+            repository.getPokemonDetail(id).collect { pokemon ->
                 _pokemon.postValue(pokemon)
                 generateImgUrls(pokemon!!.id)
             }
         }
+    }
+
+    fun adaptHeight(height:Int): String {
+        return height.toDouble().div(10).toString().plus('m')
+    }
+
+    fun adaptWeight(weight:Int): String {
+        return weight.toDouble().div(10).toString().plus("kg")
     }
 
     private fun generateImgUrls(id: Int) {
@@ -41,6 +47,8 @@ class PokemonDetailViewModel(application: Application) : AndroidViewModel(applic
             "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/$id.png",
         )
     }
+
+
 
     @FlowPreview
     @InternalCoroutinesApi

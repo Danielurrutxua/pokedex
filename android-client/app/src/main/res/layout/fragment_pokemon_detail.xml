@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewmodel"
             type="com.example.pokemon.pokedetail.PokemonDetailViewModel" />
@@ -14,8 +15,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include layout="@layout/toolbar_detail"
-            android:id="@+id/toolbar_detail"/>
+        <include
+            android:id="@+id/toolbar_detail"
+            layout="@layout/toolbar_detail" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout"
@@ -44,10 +46,10 @@
                 android:fontFamily="sans-serif"
                 android:letterSpacing="0.09"
                 android:lineSpacingExtra="5sp"
+                android:singleLine="true"
                 android:textColor="@color/fire"
                 android:textSize="11sp"
                 android:textStyle="bold"
-                android:singleLine="true"
                 app:layout_constraintStart_toEndOf="@+id/chevron_left"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="SmallSp"
@@ -61,11 +63,11 @@
                 android:fontFamily="sans-serif"
                 android:letterSpacing="0.09"
                 android:lineSpacingExtra="5sp"
+                android:maxWidth="130dp"
+                android:singleLine="true"
                 android:textColor="@color/fire"
                 android:textSize="11sp"
                 android:textStyle="bold"
-                android:maxWidth="130dp"
-                android:singleLine="true"
                 app:layout_constraintEnd_toStartOf="@+id/chevron_right"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="SmallSp"
@@ -118,7 +120,7 @@
                         android:fontFamily="sans-serif-medium"
                         android:letterSpacing="0.05"
                         android:lineSpacingExtra="8.5sp"
-                        android:text="@{'#'+String.valueOf(viewmodel.pokemon.id)}"
+                        android:text="@{'#'+viewmodel.pokemon.Companion.adaptPokemonId(String.valueOf(viewmodel.pokemon.id))}"
                         android:textColor="#1c1c1e"
                         android:textSize="15sp"
                         android:textStyle="normal"
@@ -216,7 +218,7 @@
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
-
+                                app:loadImage="@{`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/`+ viewmodel.pokemon.id + `.png`}"
                                 tools:src="@tools:sample/avatars" />
 
                             <com.google.android.material.imageview.ShapeableImageView
@@ -283,7 +285,7 @@
                         android:id="@+id/altura_valor"
                         style="@style/TextviewAtributosValores"
                         android:letterSpacing="0.05"
-                        android:text="@{viewmodel.pokemon.height}"
+                        android:text="@{viewmodel.adaptHeight(viewmodel.pokemon.height)}"
                         app:layout_constraintStart_toStartOf="@+id/altura"
                         app:layout_constraintTop_toBottomOf="@+id/altura"
                         tools:text="1,1 m" />
@@ -301,7 +303,7 @@
                         android:id="@+id/peso_valor"
                         style="@style/TextviewAtributosValores"
                         android:letterSpacing="0.05"
-                        android:text="@{viewmodel.pokemon.weight}"
+                        android:text="@{viewmodel.adaptWeight(viewmodel.pokemon.weight)}"
                         app:layout_constraintStart_toStartOf="@+id/peso"
                         app:layout_constraintTop_toBottomOf="@+id/peso"
                         tools:text="19,0 kg" />
@@ -390,7 +392,7 @@
                         android:id="@+id/vida_valor"
                         style="@style/TextviewAtributosValores.Estadisticas"
                         android:layout_marginTop="9.5dp"
-                        android:text="@{viewmodel.pokemon.stats.hp}"
+                        android:text="@{Integer.toString(viewmodel.pokemon.stats.hp)}"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/estadisticas"
                         tools:text="60" />
@@ -398,7 +400,7 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/defensa_valor"
                         style="@style/TextviewAtributosValores.Estadisticas"
-                        android:text="@{viewmodel.pokemon.stats.attack}"
+                        android:text="@{Integer.toString(viewmodel.pokemon.stats.attack)}"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/vida_valor"
                         tools:text="60" />
@@ -406,7 +408,7 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/ataque_valor"
                         style="@style/TextviewAtributosValores.Estadisticas"
-                        android:text="@{viewmodel.pokemon.stats.defense}"
+                        android:text="@{Integer.toString(viewmodel.pokemon.stats.defense)}"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/defensa_valor"
                         tools:text="60" />
@@ -414,7 +416,7 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/ataque_especial_valor"
                         style="@style/TextviewAtributosValores.Estadisticas"
-                        android:text="@{viewmodel.pokemon.stats.special_attack}"
+                        android:text="@{Integer.toString(viewmodel.pokemon.stats.special_attack)}"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/ataque_valor"
                         tools:text="60" />
@@ -422,7 +424,7 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/velocidad_valor"
                         style="@style/TextviewAtributosValores.Estadisticas"
-                        android:text="@{viewmodel.pokemon.stats.speed}"
+                        android:text="@{Integer.toString(viewmodel.pokemon.stats.speed)}"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/ataque_especial_valor"
                         tools:text="60" />
@@ -430,7 +432,7 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/defensa_especial_valor"
                         style="@style/TextviewAtributosValores.Estadisticas"
-                        android:text="@{viewmodel.pokemon.stats.special_defense}"
+                        android:text="@{Integer.toString(viewmodel.pokemon.stats.special_defense)}"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/velocidad_valor"
                         tools:text="60" />
@@ -534,20 +536,20 @@
             android:id="@+id/bottom_bar"
             android:layout_width="match_parent"
             android:layout_height="76dp"
-            android:elevation="10dp"
             android:background="@drawable/layout_shadow"
-            app:layout_constraintTop_toBottomOf="@+id/scrollview"
+            android:elevation="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scrollview">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/fav_button"
+                style="@style/ButtonFav"
                 android:layout_width="wrap_content"
                 android:layout_height="54dp"
                 android:layout_gravity="center"
                 android:drawableLeft="@drawable/icon_favourite_filled_white"
-                android:text="@string/a_adir_a_favoritos"
-                style="@style/ButtonFav"/>
+                android:text="@string/a_adir_a_favoritos" />
 
         </FrameLayout>
 

@@ -15,7 +15,7 @@ private val retrofit = Retrofit.Builder()
  val service: PokeApiService = retrofit.create(PokeApiService::class.java)
 
 
-fun getPokemonRepository(application: Application): PokemonRepository {
+fun getPokemonRepository(): PokemonRepository {
     return PokemonRepository(
 
         PokeApiDataSource(service)

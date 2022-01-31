@@ -50,7 +50,8 @@
 
                     <include
                         android:id="@+id/card_view_layout"
-                        layout="@layout/card_view_filters" />
+                        layout="@layout/card_view_filters"
+                        app:viewModel="@{viewModel}"/>
 
                 </com.google.android.material.appbar.CollapsingToolbarLayout>
 

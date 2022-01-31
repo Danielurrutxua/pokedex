@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface PokemonServiceDataSource {
 
-    fun getPokemon(name: String): Flow<Pokemon>
+    fun getPokemon(id: String): Flow<Pokemon>
 
     fun getPokemonList(): Flow<List<Pokemon>>
 

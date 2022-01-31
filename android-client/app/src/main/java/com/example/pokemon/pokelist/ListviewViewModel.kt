@@ -20,7 +20,7 @@ class ListviewViewModel(application: Application) : AndroidViewModel(application
     private val _pokemonList = MutableLiveData<List<Pokemon>>()
     val pokemonList: LiveData<List<Pokemon>> = _pokemonList
     private lateinit var originalPokemonList: MutableList<Pokemon>
-    private val repository: PokemonRepository = getPokemonRepository(application)
+    private val repository: PokemonRepository = getPokemonRepository()
     var menuItemSelected = MutableLiveData<Int>()
     var loadFavourites = false
 

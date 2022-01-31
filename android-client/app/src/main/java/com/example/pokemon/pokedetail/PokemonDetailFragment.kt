@@ -12,8 +12,7 @@ import androidx.core.view.children
 import androidx.core.view.get
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
+import androidx.fragment.app.viewModels
 import com.batura.zerolibrary.widgets.DesignSystemDialog
 import com.example.pokemon.R
 import com.example.pokemon.TypeLoader
@@ -29,8 +28,9 @@ import kotlinx.coroutines.InternalCoroutinesApi
 
 class PokemonDetailFragment : Fragment() {
 
-    private lateinit var viewModel: PokemonDetailViewModel
+    private val viewModel: PokemonDetailViewModel by viewModels()
     private lateinit var binding: FragmentPokemonDetailBinding
+    private lateinit var id: String
     private lateinit var name: String
     private lateinit var listNames: List<String>
     private lateinit var listIds: List<String>
@@ -42,7 +42,6 @@ class PokemonDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        viewModel = ViewModelProvider(this).get(PokemonDetailViewModel::class.java)
         binding = FragmentPokemonDetailBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.viewmodel = viewModel
@@ -70,32 +69,32 @@ class PokemonDetailFragment : Fragment() {
         binding.chevronLeft.setOnClickListener {
             changeToDefaultImage()
             viewModel.previousName()
-            viewModel.pokemon.observe(viewLifecycleOwner, { pokemon ->
+            viewModel.pokemon.observe(viewLifecycleOwner) { pokemon ->
                 updateTextsNextPrevious2(pokemon.name)
-            })
+            }
 
         }
         binding.chevronRight.setOnClickListener {
             viewModel.nextName()
-            viewModel.pokemon.observe(viewLifecycleOwner, { pokemon ->
+            viewModel.pokemon.observe(viewLifecycleOwner) { pokemon ->
                 updateTextsNextPrevious1(pokemon.name)
-            })
+            }
             changeToDefaultImage()
         }
         binding.chevronLeftText.setOnClickListener {
             viewModel.previousName()
-            viewModel.pokemon.observe(viewLifecycleOwner, { pokemon ->
+            viewModel.pokemon.observe(viewLifecycleOwner) { pokemon ->
                 updateTextsNextPrevious2(pokemon.name)
-            })
+            }
             changeToDefaultImage()
         }
         binding.chevronRightText.setOnClickListener {
             viewModel.nextName()
-            viewModel.pokemon.observe(viewLifecycleOwner, { pokemon ->
+            viewModel.pokemon.observe(viewLifecycleOwner) { pokemon ->
                 updateTextsNextPrevious1(pokemon.name)
-            })
+            }
             changeToDefaultImage()
-        }
+    }}
 
 //        binding.favButton.setOnClickListener {
 //            val pokemon = viewModel.pokemon.value
@@ -113,32 +112,33 @@ class PokemonDetailFragment : Fragment() {
 //            }
 //
 //        }
+//
+//        binding.toolbarDetail.backArrow.setOnClickListener {
+//            it.findNavController().popBackStack()
+//        }
 
-        binding.toolbarDetail.backArrow.setOnClickListener {
-            it.findNavController().popBackStack()
-        }
 
 
-    }
 
     @FlowPreview
     @InternalCoroutinesApi
     private fun saveArgument() {
+        id = requireArguments().getString("id").toString()
         name = requireArguments().getString("name").toString()
         listNames = requireArguments().getStringArray("list")!!.toList()
         listIds = requireArguments().getStringArray("list_ids")!!.toList()
-        viewModel.saveArguments(name, listNames)
+        viewModel.saveArguments(id, listNames)
 
     }
 
     private fun updateUI() {
-        viewModel.pokemon.observe(viewLifecycleOwner, { pokemon ->
+        viewModel.pokemon.observe(viewLifecycleOwner) { pokemon ->
             loadTextsNextPrevious()
             //isFavourite(pokemon.fav)
             pokemon.abilities?.let { loadAbilities(it) }
             loadStats(pokemon.stats)
             loadTypes(pokemon.types)
-        })
+        }
     }
 
 

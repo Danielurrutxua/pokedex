@@ -12,11 +12,11 @@ class PokeApiDataSource(private val pokeApiService: PokeApiService) : PokemonSer
     private val TAG = "API_CALL"
 
     @FlowPreview
-    override fun getPokemon(name: String): Flow<Pokemon> {
+    override fun getPokemon(id: String): Flow<Pokemon> {
 
         return flow {
             try {
-                val response = pokeApiService.getPokemonById(name).execute()
+                val response = pokeApiService.getPokemonById(id).execute()
                 response.body()?.let {
                     this.emit(it)
                 }
