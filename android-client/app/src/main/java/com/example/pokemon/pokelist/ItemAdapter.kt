@@ -29,7 +29,7 @@ class ItemAdapter(private val pokemonRw: RecyclerView, private val viewModel: Li
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(pokemon: Pokemon) {
 
-            if (pokemon.fav) {
+            if (pokemon.favourite) {
                 binding.favourite.visibility = View.VISIBLE
             }else binding.favourite.visibility = View.INVISIBLE
 
@@ -106,7 +106,8 @@ class ItemAdapter(private val pokemonRw: RecyclerView, private val viewModel: Li
              */
             val list = currentList
 
-            val name = holder.binding.nameTv.text.toString().lowercase(Locale.getDefault())
+            val id = pokemon.id.toString()
+            val name = Pokemon.firstLetterUpper(pokemon.name)
             val listNames = list.map {
                 Pokemon.firstLetterUpper(it.name)
             }.toTypedArray()
@@ -116,6 +117,7 @@ class ItemAdapter(private val pokemonRw: RecyclerView, private val viewModel: Li
 
             val action =
                 PokemonListFragmentDirections.actionPokemonListFragmentToPokemonDetailFragment(
+                    id = id,
                     name = name,
                     list = listNames,
                     listIds = listIds

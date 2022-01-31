@@ -1,6 +1,5 @@
 package com.example.pokemon
 
-import android.provider.Telephony.Carriers.PORT
 import com.example.pokemon.model.api.PokemonResponse
 import com.example.pokemon.pokeapi.service
 import retrofit2.Call
@@ -50,7 +49,7 @@ class ApiTesting {
                 )
         )
         val serviceEndpoint = "http://127.0.0.1:" + BuildConfig.PORT
-        val result: Call<PokemonResponse> = service.getPokemonByName("pikachu")
+        val result: Call<PokemonResponse> = service.getPokemonById("pikachu")
         assertTrue(result.isExecuted)
         verify(
             postRequestedFor(urlPathEqualTo("/my/resource"))

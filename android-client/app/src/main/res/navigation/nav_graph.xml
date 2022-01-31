@@ -24,12 +24,15 @@
             android:id="@+id/action_pokemonDetailFragment_to_pokemonListFragment"
             app:destination="@id/pokemonListFragment" />
         <argument
-            android:name="name"
+            android:name="id"
             app:argType="string" />
         <argument android:name="list"
             app:argType="string[]" />
         <argument
             android:name="list_ids"
             app:argType="string[]" />
+        <argument
+            android:name="name"
+            app:argType="string" />
     </fragment>
 </navigation>
