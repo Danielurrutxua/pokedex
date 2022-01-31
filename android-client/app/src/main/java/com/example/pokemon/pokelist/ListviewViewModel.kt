@@ -34,9 +34,8 @@ class ListviewViewModel(application: Application) : AndroidViewModel(application
         viewModelScope.launch(Dispatchers.IO) {
             val pokemonListFlow = repository.getAllPokemon()
             pokemonListFlow.collect { pokemonList ->
-                Log.d("TAG", pokemonList.toString())
                 _pokemonList.postValue(pokemonList)
-                originalPokemonList = _pokemonList.value as MutableList<Pokemon>
+                originalPokemonList = pokemonList as MutableList<Pokemon>
                 filterList()
             }
         }
@@ -49,13 +48,13 @@ class ListviewViewModel(application: Application) : AndroidViewModel(application
         newList = filterSearchText(newList) as MutableList<Pokemon>
         if (filters.isFav) newList = newList.filter { it.favourite } as MutableList<Pokemon>
         if (filters.isFire) newList =
-            newList.filter { it.types.contains("Fuego") } as MutableList<Pokemon>
+            newList.filter { it.types.contains("fire") } as MutableList<Pokemon>
         if (filters.isPlant) newList =
-            newList.filter { it.types.contains("Planta") } as MutableList<Pokemon>
+            newList.filter { it.types.contains("grass") } as MutableList<Pokemon>
         if (filters.isFlying) newList =
-            newList.filter { it.types.contains("Volador") } as MutableList<Pokemon>
+            newList.filter { it.types.contains("flying") } as MutableList<Pokemon>
         if (filters.isPoison) newList =
-            newList.filter { it.types.contains("Veneno") } as MutableList<Pokemon>
+            newList.filter { it.types.contains("poison") } as MutableList<Pokemon>
 
         _pokemonList.postValue(reorderList(filters.listOrder, newList))
 

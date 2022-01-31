@@ -32,13 +32,10 @@ class PokeApiDataSource(private val pokeApiService: PokeApiService) : PokemonSer
             try {
                 val response = pokeApiService.getPokemonList().execute()
                 response.body()?.let { results ->
-                    Log.d("TAG", results.toString())
                     this.emit(results)
                 }
             } catch (t: Throwable) {
-                Log.e(TAG, t.message.toString()
-
-                )
+                Log.e(TAG, t.message.toString())
             }
         }
     }
