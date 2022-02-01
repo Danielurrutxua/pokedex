@@ -1,7 +1,7 @@
 package com.example.pokemon.pokeapi
 
 import com.example.pokemon.model.Pokemon
-import com.example.pokemon.pokeapi.datasource.service.PokemonServiceDataSource
+import com.example.pokemon.service.PokemonServiceDataSource
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
