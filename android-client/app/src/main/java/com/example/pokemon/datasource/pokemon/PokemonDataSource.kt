@@ -1,9 +1,9 @@
-package com.example.pokemon.service
+package com.example.pokemon.datasource.pokemon
 
 import com.example.pokemon.model.Pokemon
 import kotlinx.coroutines.flow.Flow
 
-interface PokemonServiceDataSource {
+interface PokemonDataSource {
 
     fun getPokemon(id: String): Flow<Pokemon>
 

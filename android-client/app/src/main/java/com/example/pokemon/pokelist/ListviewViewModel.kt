@@ -1,14 +1,12 @@
 package com.example.pokemon.pokelist
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.pokemon.MyApplication
 import com.example.pokemon.model.Pokemon
-import com.example.pokemon.pokeapi.PokemonRepository
-import com.example.pokemon.pokeapi.getPokemonRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -20,7 +18,7 @@ class ListviewViewModel(application: Application) : AndroidViewModel(application
     private val _pokemonList = MutableLiveData<List<Pokemon>>()
     val pokemonList: LiveData<List<Pokemon>> = _pokemonList
     private lateinit var originalPokemonList: MutableList<Pokemon>
-    private val repository: PokemonRepository = getPokemonRepository()
+    private val pokemonRepository = (application as MyApplication).pokemonRepository
     var menuItemSelected = MutableLiveData<Int>()
     var loadFavourites = false
 
@@ -32,8 +30,7 @@ class ListviewViewModel(application: Application) : AndroidViewModel(application
 
     private fun getAllPokemon() {
         viewModelScope.launch(Dispatchers.IO) {
-            val pokemonListFlow = repository.getAllPokemon()
-            pokemonListFlow.collect { pokemonList ->
+            pokemonRepository.getAllPokemon().collect { pokemonList ->
                 _pokemonList.postValue(pokemonList)
                 originalPokemonList = pokemonList as MutableList<Pokemon>
                 filterList()

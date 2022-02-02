@@ -1,30 +1,28 @@
 package com.example.pokemon.pokedetail
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
+import com.example.pokemon.MyApplication
 import com.example.pokemon.model.Pokemon
-import com.example.pokemon.pokeapi.PokemonRepository
-import com.example.pokemon.pokeapi.getPokemonRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-class PokemonDetailViewModel : ViewModel() {
+class PokemonDetailViewModel(application: Application) : AndroidViewModel(application) {
 
     private val _pokemon = MutableLiveData<Pokemon>()
     val pokemon: LiveData<Pokemon> = _pokemon
     lateinit var imgUrls: List<String>
     private var list = mutableListOf<String>()
-    private val repository: PokemonRepository = getPokemonRepository()
+    private val pokemonRepository = (application as MyApplication).pokemonRepository
 
     @InternalCoroutinesApi
     @FlowPreview
     fun loadPokemonDetail(id: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.getPokemonDetail(id).collect { pokemon ->
+            pokemonRepository.getPokemonDetail(id).collect { pokemon ->
                 _pokemon.postValue(pokemon)
                 generateImgUrls(pokemon!!.id)
             }
