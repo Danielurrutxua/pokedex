@@ -1,6 +1,6 @@
-package com.example.pokemon.pokeapi.datasource.service
+package com.example.pokemon.datasource.service
 
-import com.example.pokemon.pokeapi.serviceLocator
+import com.example.pokemon.api.serviceLocator
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration
 import com.github.tomakehurst.wiremock.junit.WireMockRule
 import org.hamcrest.MatcherAssert.assertThat
@@ -10,7 +10,7 @@ import org.hamcrest.core.IsEqual
 import org.junit.Rule
 import org.junit.Test
 
-class GetPokemonByIdRequestSuccessContractTesting {
+class GetPokemonByIdRequestSuccessContractTest {
 
     @get:Rule
     val wireMockRule = WireMockRule(WireMockConfiguration.wireMockConfig().dynamicPort())

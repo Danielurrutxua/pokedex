@@ -1,11 +1,11 @@
-package com.example.pokemon.pokeapi
+package com.example.pokemon.datasource.pokemon
 
 import com.example.pokemon.model.Pokemon
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-interface PokeApiService {
+interface PokemonService {
 
     @GET("pokemon")
     fun getPokemonList(): Call<List<Pokemon>>

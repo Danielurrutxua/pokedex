@@ -1,13 +1,12 @@
-package com.example.pokemon.service
+package com.example.pokemon.datasource.pokemon
 
 import android.util.Log
 import com.example.pokemon.model.Pokemon
-import com.example.pokemon.pokeapi.PokeApiService
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class PokeApiDataSource(private val pokeApiService: PokeApiService) : PokemonServiceDataSource {
+class PokemonDataSourceImpl(private val pokemonService: PokemonService) : PokemonDataSource {
 
     private val TAG = "API_CALL"
 
@@ -16,7 +15,7 @@ class PokeApiDataSource(private val pokeApiService: PokeApiService) : PokemonSer
 
         return flow {
             try {
-                val response = pokeApiService.getPokemonById(id).execute()
+                val response = pokemonService.getPokemonById(id).execute()
                 response.body()?.let {
                     this.emit(it)
                 }
@@ -30,7 +29,7 @@ class PokeApiDataSource(private val pokeApiService: PokeApiService) : PokemonSer
 
         return flow {
             try {
-                val response = pokeApiService.getPokemonList().execute()
+                val response = pokemonService.getPokemonList().execute()
                 response.body()?.let { results ->
                     this.emit(results)
                 }

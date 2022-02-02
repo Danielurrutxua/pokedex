@@ -1,11 +1,19 @@
 package com.example.pokemon
 
 import android.app.Application
-import io.realm.Realm
+import com.example.pokemon.datasource.repositories.pokemon.PokemonRepository
+import com.example.pokemon.datasource.repositories.user.UserRepository
+import com.example.pokemon.services.pokemon.PokemonServiceLocator
+import com.example.pokemon.services.user.UserServiceLocator
 
 class MyApplication: Application() {
-    override fun onCreate() {
-        super.onCreate()
-        Realm.init(this)
-    }
+
+    private val baseUrl = "http://10.0.2.2:5000"
+
+    val pokemonRepository: PokemonRepository
+        get() = PokemonServiceLocator.providePokemonRepository(baseUrl)
+
+    val userRepository: UserRepository
+        get() = UserServiceLocator.provideUserRepository(baseUrl)
+
 }
