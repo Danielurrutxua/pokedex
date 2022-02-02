@@ -1,4 +1,4 @@
-package com.example.pokemon.pokeapi.datasource.service
+package com.example.pokemon.service
 
 import android.util.Log
 import com.example.pokemon.model.Pokemon

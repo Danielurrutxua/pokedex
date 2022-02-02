@@ -1,0 +1,14 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/pokemon"
+  },
+  "response": {
+    "status": 200,
+    "body":
+    "[{\"types\":[\"water\",\"fire\"],\"name\":\"pikachu\",\"id\":0,\"favourite\":true}]",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}
