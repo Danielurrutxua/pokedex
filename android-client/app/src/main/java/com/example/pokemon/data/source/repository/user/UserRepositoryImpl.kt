@@ -1,9 +1,9 @@
-package com.example.pokemon.datasource.repositories.user
+package com.example.pokemon.data.source.repository.user
 
-import com.example.pokemon.datasource.user.UserDataSource
-import com.example.pokemon.model.User
-import com.example.pokemon.model.auth.LoginResponse
-import com.example.pokemon.model.auth.RegisterResponse
+import com.example.pokemon.data.source.user.UserDataSource
+import com.example.pokemon.data.model.User
+import com.example.pokemon.data.model.auth.LoginResponse
+import com.example.pokemon.data.model.auth.RegisterResponse
 import kotlinx.coroutines.flow.Flow
 
 class UserRepositoryImpl(createUserDataSource: UserDataSource) : UserRepository {

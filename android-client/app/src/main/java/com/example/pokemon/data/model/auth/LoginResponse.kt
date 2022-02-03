@@ -1,4 +1,4 @@
-package com.example.pokemon.model.auth
+package com.example.pokemon.data.model.auth
 
 data class LoginResponse (
     val code: Int,

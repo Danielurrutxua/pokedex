@@ -18,8 +18,8 @@ import com.example.pokemon.R
 import com.example.pokemon.TypeLoader
 import com.example.pokemon.databinding.FragmentPokemonDetailBinding
 import com.example.pokemon.loadImage
-import com.example.pokemon.model.Pokemon
-import com.example.pokemon.model.Stats
+import com.example.pokemon.data.model.Pokemon
+import com.example.pokemon.data.model.Stats
 import com.google.android.material.chip.Chip
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.FlowPreview

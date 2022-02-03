@@ -3,7 +3,7 @@ package com.example.pokemon.pokedetail
 import android.app.Application
 import androidx.lifecycle.*
 import com.example.pokemon.MyApplication
-import com.example.pokemon.model.Pokemon
+import com.example.pokemon.data.model.Pokemon
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.InternalCoroutinesApi

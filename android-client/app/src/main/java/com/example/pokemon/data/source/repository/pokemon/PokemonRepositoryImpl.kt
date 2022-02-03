@@ -1,7 +1,7 @@
-package com.example.pokemon.datasource.repositories.pokemon
+package com.example.pokemon.data.source.repository.pokemon
 
-import com.example.pokemon.model.Pokemon
-import com.example.pokemon.datasource.pokemon.PokemonDataSource
+import com.example.pokemon.data.model.Pokemon
+import com.example.pokemon.data.source.pokemon.PokemonDataSource
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.Flow

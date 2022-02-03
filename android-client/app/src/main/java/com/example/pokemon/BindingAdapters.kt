@@ -4,7 +4,7 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.pokemon.model.Pokemon
+import com.example.pokemon.data.model.Pokemon
 import com.example.pokemon.pokelist.ItemAdapter
 
 /**

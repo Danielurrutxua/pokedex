@@ -1,7 +1,7 @@
-package com.example.pokemon.datasource.pokemon
+package com.example.pokemon.data.source.pokemon
 
 import android.util.Log
-import com.example.pokemon.model.Pokemon
+import com.example.pokemon.data.model.Pokemon
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

@@ -1,11 +1,11 @@
 package com.example.pokemon.services.user
 
 import androidx.annotation.VisibleForTesting
-import com.example.pokemon.datasource.repositories.user.UserRepository
-import com.example.pokemon.datasource.repositories.user.UserRepositoryImpl
-import com.example.pokemon.datasource.user.UserDataSource
-import com.example.pokemon.datasource.user.UserDataSourceImpl
-import com.example.pokemon.datasource.user.UserService
+import com.example.pokemon.data.source.repository.user.UserRepository
+import com.example.pokemon.data.source.repository.user.UserRepositoryImpl
+import com.example.pokemon.data.source.user.UserDataSource
+import com.example.pokemon.data.source.user.UserDataSourceImpl
+import com.example.pokemon.data.source.user.UserService
 import com.example.pokemon.services.RetrofitBuilder
 
 object UserServiceLocator {

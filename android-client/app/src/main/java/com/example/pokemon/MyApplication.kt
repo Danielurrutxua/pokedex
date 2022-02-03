@@ -1,8 +1,8 @@
 package com.example.pokemon
 
 import android.app.Application
-import com.example.pokemon.datasource.repositories.pokemon.PokemonRepository
-import com.example.pokemon.datasource.repositories.user.UserRepository
+import com.example.pokemon.data.source.repository.pokemon.PokemonRepository
+import com.example.pokemon.data.source.repository.user.UserRepository
 import com.example.pokemon.services.pokemon.PokemonServiceLocator
 import com.example.pokemon.services.user.UserServiceLocator
 

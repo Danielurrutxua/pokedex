@@ -2,11 +2,11 @@ package com.example.pokemon.services.pokemon
 
 import androidx.annotation.VisibleForTesting
 import com.example.pokemon.services.RetrofitBuilder
-import com.example.pokemon.datasource.repositories.pokemon.PokemonRepository
-import com.example.pokemon.datasource.repositories.pokemon.PokemonRepositoryImpl
-import com.example.pokemon.datasource.pokemon.PokemonDataSource
-import com.example.pokemon.datasource.pokemon.PokemonDataSourceImpl
-import com.example.pokemon.datasource.pokemon.PokemonService
+import com.example.pokemon.data.source.repository.pokemon.PokemonRepository
+import com.example.pokemon.data.source.repository.pokemon.PokemonRepositoryImpl
+import com.example.pokemon.data.source.pokemon.PokemonDataSource
+import com.example.pokemon.data.source.pokemon.PokemonDataSourceImpl
+import com.example.pokemon.data.source.pokemon.PokemonService
 
 object PokemonServiceLocator {
 

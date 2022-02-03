@@ -1,6 +1,6 @@
-package com.example.pokemon.datasource.pokemon
+package com.example.pokemon.data.source.pokemon
 
-import com.example.pokemon.model.Pokemon
+import com.example.pokemon.data.model.Pokemon
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

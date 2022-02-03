@@ -1,6 +1,6 @@
-package com.example.pokemon.datasource.pokemon
+package com.example.pokemon.data.source.pokemon
 
-import com.example.pokemon.model.Pokemon
+import com.example.pokemon.data.model.Pokemon
 import kotlinx.coroutines.flow.Flow
 
 interface PokemonDataSource {

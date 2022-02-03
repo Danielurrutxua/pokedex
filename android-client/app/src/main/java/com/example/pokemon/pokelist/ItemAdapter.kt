@@ -15,8 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pokemon.R
 import com.example.pokemon.TypeLoader
 import com.example.pokemon.databinding.PokemonListItemBinding
-import com.example.pokemon.model.Pokemon
-import java.util.*
+import com.example.pokemon.data.model.Pokemon
 
 
 class ItemAdapter(private val pokemonRw: RecyclerView, private val viewModel: ListviewViewModel) : ListAdapter<Pokemon, ItemAdapter.ItemViewHolder>(

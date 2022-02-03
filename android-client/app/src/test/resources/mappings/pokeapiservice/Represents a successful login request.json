@@ -1,0 +1,21 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/user/login",
+    "queryParameters": {
+      "email": {
+        "equalTo": "drub@gmail.com"
+      },
+      "password": {
+        "equalTo": "password"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": "{\"email\":\"drub@gmail.com\",\"username\":\"drubidu226\"}",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}
